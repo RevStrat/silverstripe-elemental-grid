@@ -212,10 +212,10 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
     public function ColClasses() {
         switch (Config::forClass('TheWebmen\ElementalGrid')->get('cssFramework')){
             case 'bulma':
-                return $this->BulmaColClasses();
+                return $this->BulmaColClasses() . $this->extend('updateColClasses');
                 break;
             default:
-                return $this->BootstrapColClasses();
+                return $this->BootstrapColClasses() . $this->extend('updateColClasses');
         }
     }
 
