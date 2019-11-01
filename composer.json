@@ -17,9 +17,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "silverstripe/cms": "^4.0@dev",
+        "silverstripe/cms": "^4.0",
         "silverstripe/vendor-plugin": "^1.0",
-        "dnadesign/silverstripe-elemental": "^3.0"
+        "dnadesign/silverstripe-elemental": "^4.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
