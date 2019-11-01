@@ -13,8 +13,8 @@ en:
     VISIBILITY_MD: 'Visibility MD'
     VISIBILITY_LG: 'Visibility LG'
     DEFAULT: 'Default'
-    VISIBLE: 'Zichtbaar'
-    HIDDEN: 'Onzichtbaar'
+    VISIBLE: 'Visible'
+    HIDDEN: 'Hidden'
     COLUMN: 'Column'
     NONE: 'None'
   TheWebmen\ElementalGrid\Models\ElementRow:
