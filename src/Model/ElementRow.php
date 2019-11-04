@@ -27,7 +27,7 @@ class ElementRow extends BaseElement
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
-            $fields->removeByName('TitleAndDisplayed');
+            $fields->removeByName('Title');
             $fields->addFieldToTab('Root.Main', TextField::create('Title'));
         });
 
