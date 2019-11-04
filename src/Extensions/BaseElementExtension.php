@@ -38,7 +38,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
     public function populateDefaults()
     {
         $defaultSizeField = 'Size' . Config::forClass('TheWebmen\ElementalGrid')->get('defaultSizeField');
-        $this->owner->$defaultSizeField = 6;
+        $this->owner->$defaultSizeField = 12;
     }
 
     /**
@@ -93,7 +93,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
         } else {
             $fields->findOrMakeTab('Root.Column', _t(__CLASS__ . '.COLUMN', 'Column'));
             $fields->addFieldToTab('Root.Column', HeaderField::create('HeadingXS', _t(__CLASS__ . '.XS', 'XS')));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('SizeXS', _t(__CLASS__ . '.SIZE_XS', 'Size XS'), self::getColSizeOptions(true)));
+            $fields->addFieldToTab('Root.Column', DropdownField::create('SizeXS', _t(__CLASS__ . '.SIZE_XS', 'Size XS'), self::getColSizeOptions()));
             $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetXS', _t(__CLASS__ . '.OFFSET_XS', 'Offset XS'), self::getColSizeOptions(false, true)));
             $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilityXS', _t(__CLASS__ . '.VISIBILITY_XS', 'Visibility XS'), self::getColVisibilityOptions()));
 
@@ -103,7 +103,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
             $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilitySM', _t(__CLASS__ . '.VISIBILITY_SM', 'Visibility SM'), self::getColVisibilityOptions()));
 
             $fields->addFieldToTab('Root.Column', HeaderField::create('HeadingMD', _t(__CLASS__ . '.MD', 'MD')));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('SizeMD', _t(__CLASS__ . '.SIZE_MD', 'Size MD'), self::getColSizeOptions()));
+            $fields->addFieldToTab('Root.Column', DropdownField::create('SizeMD', _t(__CLASS__ . '.SIZE_MD', 'Size MD'), self::getColSizeOptions(true)));
             $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetMD', _t(__CLASS__ . '.OFFSET_MD', 'Offset MD'), self::getColSizeOptions(false, true)));
             $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilityMD', _t(__CLASS__ . '.VISIBILITY_MD', 'Visibility MD'), self::getColVisibilityOptions()));
 
@@ -112,7 +112,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
             $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetLG', _t(__CLASS__ . '.OFFSET_LG', 'Offset LG'), self::getColSizeOptions(false, true)));
             $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilityLG', _t(__CLASS__ . '.VISIBILITY_LG', 'Visibility LG'), self::getColVisibilityOptions()));
         }
-        parent::updateCMSFields($fields);
+        //parent::updateCMSFields($fields);
     }
 
     /**
