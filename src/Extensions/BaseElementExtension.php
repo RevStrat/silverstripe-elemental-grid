@@ -134,17 +134,22 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
             $classes .= ' col-lg-' . $this->owner->SizeLG;
         }
         //Offset options
+        $setOffset = false;
         if($this->owner->OffsetXS){
             $classes .= ' col-xs-offset-' . $this->owner->OffsetXS;
+            $setOffset = true;
         }
-        if($this->owner->OffsetSM){
+        if($this->owner->OffsetSM || $setOffset){
             $classes .= ' col-sm-offset-' . $this->owner->OffsetSM;
+            $setOffset = true;
         }
-        if($this->owner->OffsetMD){
+        if($this->owner->OffsetMD || $setOffset){
             $classes .= ' col-md-offset-' . $this->owner->OffsetMD;
+            $setOffset = true;
         }
-        if($this->owner->OffsetLG){
+        if($this->owner->OffsetLG || $setOffset){
             $classes .= ' col-lg-offset-' . $this->owner->OffsetLG;
+            $setOffset = true;
         }
         //Visibility options
         if($this->owner->VisibilityXS && $this->owner->VisibilityXS != 'default'){
