@@ -99,17 +99,17 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
 
             $fields->addFieldToTab('Root.Column', HeaderField::create('HeadingSM', _t(__CLASS__ . '.SM', 'SM')));
             $fields->addFieldToTab('Root.Column', DropdownField::create('SizeSM', _t(__CLASS__ . '.SIZE_SM', 'Size SM'), self::getColSizeOptions(true)));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetSM', _t(__CLASS__ . '.OFFSET_SM', 'Offset SM'), self::getColSizeOptions(false, true)));
+            $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetSM', _t(__CLASS__ . '.OFFSET_SM', 'Offset SM'), self::getColSizeOptions(true, true)));
             $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilitySM', _t(__CLASS__ . '.VISIBILITY_SM', 'Visibility SM'), self::getColVisibilityOptions()));
 
             $fields->addFieldToTab('Root.Column', HeaderField::create('HeadingMD', _t(__CLASS__ . '.MD', 'MD')));
             $fields->addFieldToTab('Root.Column', DropdownField::create('SizeMD', _t(__CLASS__ . '.SIZE_MD', 'Size MD'), self::getColSizeOptions(true)));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetMD', _t(__CLASS__ . '.OFFSET_MD', 'Offset MD'), self::getColSizeOptions(false, true)));
+            $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetMD', _t(__CLASS__ . '.OFFSET_MD', 'Offset MD'), self::getColSizeOptions(true, true)));
             $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilityMD', _t(__CLASS__ . '.VISIBILITY_MD', 'Visibility MD'), self::getColVisibilityOptions()));
 
             $fields->addFieldToTab('Root.Column', HeaderField::create('HeadingLG', _t(__CLASS__ . '.LG', 'LG')));
             $fields->addFieldToTab('Root.Column', DropdownField::create('SizeLG', _t(__CLASS__ . '.SIZE_LG', 'Size LG'), self::getColSizeOptions(true)));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetLG', _t(__CLASS__ . '.OFFSET_LG', 'Offset LG'), self::getColSizeOptions(false, true)));
+            $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetLG', _t(__CLASS__ . '.OFFSET_LG', 'Offset LG'), self::getColSizeOptions(true, true)));
             $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilityLG', _t(__CLASS__ . '.VISIBILITY_LG', 'Visibility LG'), self::getColVisibilityOptions()));
         }
         //parent::updateCMSFields($fields);
