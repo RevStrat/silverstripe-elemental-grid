@@ -6,6 +6,7 @@ use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\Forms\DropdownField;
 use TheWebmen\ElementalGrid\Controllers\ElementRowController;
 
 class ElementRow extends BaseElement
