@@ -103,40 +103,39 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
         } else {
             $fields->addFieldsToTab('Root.Layout', [
                 DropdownField::create('SizeXS', _t(__CLASS__ . '.SIZE_XS', 'Size XS'), self::getColSizeOptions()),
-                DropdownField::create('OffsetXS', _t(__CLASS__ . '.OFFSET_XS', 'Offset XS'), self::getColSizeOptions(false, true))),
+                DropdownField::create('OffsetXS', _t(__CLASS__ . '.OFFSET_XS', 'Offset XS'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayXS', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayXS')->enumValues()),
                 DropdownField::create('VerticalAlignment', 'Vertical Alignement', singleton($this->owner->ClassName)->dbObject('VerticalAlignment')->enumValues()),
-                DropdownField::create('OrderXS', 'Order', self::getColSizeOptions()),
+                DropdownField::create('OrderXS', 'Order', self::getColSizeOptions())
             ]);
 
             $fields->addFieldsToTab('Root.SmallLayout', [
                 DropdownField::create('SizeSM', _t(__CLASS__ . '.SIZE_SM', 'Size SM'), self::getColSizeOptions(true)),
                 DropdownField::create('OffsetSM', _t(__CLASS__ . '.OFFSET_SM', 'Offset SM'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplaySM', 'Display', singleton($this->owner->ClassName)->dbObject('DisplaySM')->enumValues()),
-                DropdownField::create('OrderSM', 'Order', self::getColSizeOptions()),
+                DropdownField::create('OrderSM', 'Order', self::getColSizeOptions())
             ]);
 
             $fields->addFieldsToTab('Root.MediumLayout', [
                 DropdownField::create('SizeMD', _t(__CLASS__ . '.SIZE_MD', 'Size MD'), self::getColSizeOptions(true)),
                 DropdownField::create('OffsetMD', _t(__CLASS__ . '.OFFSET_MD', 'Offset MD'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayMD', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayMD')->enumValues()),
-                DropdownField::create('OrderMD', 'Order', self::getColSizeOptions()),
+                DropdownField::create('OrderMD', 'Order', self::getColSizeOptions())
             ]);
 
             $fields->addFieldsToTab('Root.LargeLayout', [
                 DropdownField::create('SizeLG', _t(__CLASS__ . '.SIZE_LG', 'Size LG'), self::getColSizeOptions(true)),
                 DropdownField::create('OffsetLG', _t(__CLASS__ . '.OFFSET_LG', 'Offset LG'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayLG', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayLG')->enumValues()),
-                DropdownField::create('OrderLG', 'Order', self::getColSizeOptions()),
+                DropdownField::create('OrderLG', 'Order', self::getColSizeOptions())
             ]);
 
             $fields->addFieldToTab('Root.ExtraLargeLayout', [
                 DropdownField::create('SizeXL', _t(__CLASS__ . '.SIZE_XL', 'Size XL'), self::getColSizeOptions(true)),
-                DropdownField::create('OffsetXL', _t(__CLASS__ . '.OFFSET_XL', 'Offset XL'), self::getColSizeOptions(false, true))
+                DropdownField::create('OffsetXL', _t(__CLASS__ . '.OFFSET_XL', 'Offset XL'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayXL', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayXL')->enumValues()),
-                DropdownField::create('OrderXL', 'Order', self::getColSizeOptions()),
+                DropdownField::create('OrderXL', 'Order', self::getColSizeOptions())
             ]);
-        }
         }
         //parent::updateCMSFields($fields);
     }
