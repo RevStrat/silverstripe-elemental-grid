@@ -10,6 +10,11 @@ use TheWebmen\ElementalGrid\Controllers\ElementRowController;
 
 class ElementRow extends BaseElement
 {
+    private $db = [
+        'VerticalAlignment' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
+        'HorizontalAlignment' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")'
+    ];
+
     private static $icon = 'font-icon-menu';
 
     private static $table_name = 'ElementRow';
@@ -31,7 +36,21 @@ class ElementRow extends BaseElement
             $fields->addFieldToTab('Root.Main', TextField::create('Title'));
         });
 
-        return parent::getCMSFields();
+        $fields = parent::getCMSFields();
+        $fields->addFieldsToTab('Root.Alignment', [
+            new DropdownField(
+              'VerticalAlignment',
+              'Vertical Alignement',
+              singleton($this->owner->ClassName)->dbObject('VerticalAlignment')->enumValues()
+            ),
+            new DropdownField(
+              'HorizontalAlignment',
+              'Horizontal Alignement',
+              singleton($this->owner->ClassName)->dbObject('VerticalAlignment')->enumValues()
+            ),
+        ]);
+
+        return $fields;
     }
 
     public function getSummary()

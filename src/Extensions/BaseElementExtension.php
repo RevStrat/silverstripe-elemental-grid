@@ -21,16 +21,27 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
         'SizeSM' => 'Int',
         'SizeMD' => 'Int',
         'SizeLG' => 'Int',
+        'SizeXL' => 'Int'
 
         'OffsetXS' => 'Int',
         'OffsetSM' => 'Int',
         'OffsetMD' => 'Int',
         'OffsetLG' => 'Int',
+        'OffsetXL' => 'Int',
 
-        'VisibilityXS' => 'Varchar',
-        'VisibilitySM' => 'Varchar',
-        'VisibilityMD' => 'Varchar',
-        'VisibilityLG' => 'Varchar',
+        'VerticalAlignment' => 'Enum("default,align-self-start,align-self-center,align-self-end", "default")',
+
+        'DisplayXS' => 'Enum("default,none,inline,inline-block,block,table,table-cell,table-row,flex,inline-flex", "default")',
+        'DisplaySM' => 'Enum("default,none,inline,inline-block,block,table,table-cell,table-row,flex,inline-flex", "default")',
+        'DisplayMD' => 'Enum("default,none,inline,inline-block,block,table,table-cell,table-row,flex,inline-flex", "default")',
+        'DisplayLG' => 'Enum("default,none,inline,inline-block,block,table,table-cell,table-row,flex,inline-flex", "default")',
+        'DisplayXL' => 'Enum("default,none,inline,inline-block,block,table,table-cell,table-row,flex,inline-flex", "default")',
+
+        'OrderXS' => 'Int',
+        'OrderSM' => 'Int',
+        'OrderMD' => 'Int',
+        'OrderLG' => 'Int',
+        'OrderXL' => 'Int',
 
         'BlockType' => 'Varchar'
     );
@@ -82,35 +93,50 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
             $fields->removeByName('SizeSM');
             $fields->removeByName('SizeMD');
             $fields->removeByName('SizeLG');
+            $fields->removeByName('SizeXL');
             $fields->removeByName('OffsetXS');
             $fields->removeByName('OffsetSM');
             $fields->removeByName('OffsetMD');
             $fields->removeByName('OffsetLG');
-            $fields->removeByName('VisibilityXS');
-            $fields->removeByName('VisibilitySM');
-            $fields->removeByName('VisibilityMD');
-            $fields->removeByName('VisibilityLG');
+            $fields->removeByName('OffsetXL');
+            $fields->removeByName('VerticalAlignment');
         } else {
-            $fields->findOrMakeTab('Root.Column', _t(__CLASS__ . '.COLUMN', 'Column'));
-            $fields->addFieldToTab('Root.Column', HeaderField::create('HeadingXS', _t(__CLASS__ . '.XS', 'XS')));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('SizeXS', _t(__CLASS__ . '.SIZE_XS', 'Size XS'), self::getColSizeOptions()));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetXS', _t(__CLASS__ . '.OFFSET_XS', 'Offset XS'), self::getColSizeOptions(false, true)));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilityXS', _t(__CLASS__ . '.VISIBILITY_XS', 'Visibility XS'), self::getColVisibilityOptions()));
+            $fields->addFieldsToTab('Root.Layout', [
+                DropdownField::create('SizeXS', _t(__CLASS__ . '.SIZE_XS', 'Size XS'), self::getColSizeOptions()),
+                DropdownField::create('OffsetXS', _t(__CLASS__ . '.OFFSET_XS', 'Offset XS'), self::getColSizeOptions(false, true))),
+                DropdownField::create('DisplayXS', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayXS')->enumValues()),
+                DropdownField::create('VerticalAlignment', 'Vertical Alignement', singleton($this->owner->ClassName)->dbObject('VerticalAlignment')->enumValues()),
+                DropdownField::create('OrderXS', 'Order', self::getColSizeOptions()),
+            ]);
 
-            $fields->addFieldToTab('Root.Column', HeaderField::create('HeadingSM', _t(__CLASS__ . '.SM', 'SM')));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('SizeSM', _t(__CLASS__ . '.SIZE_SM', 'Size SM'), self::getColSizeOptions(true)));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetSM', _t(__CLASS__ . '.OFFSET_SM', 'Offset SM'), self::getColSizeOptions(false, true)));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilitySM', _t(__CLASS__ . '.VISIBILITY_SM', 'Visibility SM'), self::getColVisibilityOptions()));
+            $fields->addFieldsToTab('Root.SmallLayout', [
+                DropdownField::create('SizeSM', _t(__CLASS__ . '.SIZE_SM', 'Size SM'), self::getColSizeOptions(true)),
+                DropdownField::create('OffsetSM', _t(__CLASS__ . '.OFFSET_SM', 'Offset SM'), self::getColSizeOptions(false, true)),
+                DropdownField::create('DisplaySM', 'Display', singleton($this->owner->ClassName)->dbObject('DisplaySM')->enumValues()),
+                DropdownField::create('OrderSM', 'Order', self::getColSizeOptions()),
+            ]);
 
-            $fields->addFieldToTab('Root.Column', HeaderField::create('HeadingMD', _t(__CLASS__ . '.MD', 'MD')));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('SizeMD', _t(__CLASS__ . '.SIZE_MD', 'Size MD'), self::getColSizeOptions(true)));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetMD', _t(__CLASS__ . '.OFFSET_MD', 'Offset MD'), self::getColSizeOptions(false, true)));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilityMD', _t(__CLASS__ . '.VISIBILITY_MD', 'Visibility MD'), self::getColVisibilityOptions()));
+            $fields->addFieldsToTab('Root.MediumLayout', [
+                DropdownField::create('SizeMD', _t(__CLASS__ . '.SIZE_MD', 'Size MD'), self::getColSizeOptions(true)),
+                DropdownField::create('OffsetMD', _t(__CLASS__ . '.OFFSET_MD', 'Offset MD'), self::getColSizeOptions(false, true)),
+                DropdownField::create('DisplayMD', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayMD')->enumValues()),
+                DropdownField::create('OrderMD', 'Order', self::getColSizeOptions()),
+            ]);
 
-            $fields->addFieldToTab('Root.Column', HeaderField::create('HeadingLG', _t(__CLASS__ . '.LG', 'LG')));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('SizeLG', _t(__CLASS__ . '.SIZE_LG', 'Size LG'), self::getColSizeOptions(true)));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('OffsetLG', _t(__CLASS__ . '.OFFSET_LG', 'Offset LG'), self::getColSizeOptions(false, true)));
-            $fields->addFieldToTab('Root.Column', DropdownField::create('VisibilityLG', _t(__CLASS__ . '.VISIBILITY_LG', 'Visibility LG'), self::getColVisibilityOptions()));
+            $fields->addFieldsToTab('Root.LargeLayout', [
+                DropdownField::create('SizeLG', _t(__CLASS__ . '.SIZE_LG', 'Size LG'), self::getColSizeOptions(true)),
+                DropdownField::create('OffsetLG', _t(__CLASS__ . '.OFFSET_LG', 'Offset LG'), self::getColSizeOptions(false, true)),
+                DropdownField::create('DisplayLG', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayLG')->enumValues()),
+                DropdownField::create('OrderLG', 'Order', self::getColSizeOptions()),
+            ]);
+
+            $fields->addFieldToTab('Root.ExtraLargeLayout', [
+                DropdownField::create('SizeXL', _t(__CLASS__ . '.SIZE_XL', 'Size XL'), self::getColSizeOptions(true)),
+                DropdownField::create('OffsetXL', _t(__CLASS__ . '.OFFSET_XL', 'Offset XL'), self::getColSizeOptions(false, true))
+                DropdownField::create('DisplayXL', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayXL')->enumValues()),
+                DropdownField::create('OrderXL', 'Order', self::getColSizeOptions()),
+            ]);
+        }
         }
         //parent::updateCMSFields($fields);
     }
@@ -122,7 +148,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
         //Col options
         $classes = '';
         if($this->owner->SizeXS){
-            $classes .= ' col-xs-' . $this->owner->SizeXS;
+            $classes .= ' col-' . $this->owner->SizeXS;
         }
         if($this->owner->SizeSM){
             $classes .= ' col-sm-' . $this->owner->SizeSM;
@@ -133,37 +159,65 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
         if($this->owner->SizeLG){
             $classes .= ' col-lg-' . $this->owner->SizeLG;
         }
+        if($this->owner->SizeXL){
+            $classes .= ' col-xl-' . $this->owner->SizeLG;
+        }
         //Offset options
         $setOffset = false;
         if($this->owner->OffsetXS){
-            $classes .= ' col-xs-offset-' . $this->owner->OffsetXS;
+            $classes .= ' offset-' . $this->owner->OffsetXS;
             $setOffset = true;
         }
         if($this->owner->OffsetSM || $setOffset){
-            $classes .= ' col-sm-offset-' . $this->owner->OffsetSM;
+            $classes .= ' offset-sm-' . $this->owner->OffsetSM;
             $setOffset = true;
         }
         if($this->owner->OffsetMD || $setOffset){
-            $classes .= ' col-md-offset-' . $this->owner->OffsetMD;
+            $classes .= ' offset-md-' . $this->owner->OffsetMD;
             $setOffset = true;
         }
         if($this->owner->OffsetLG || $setOffset){
-            $classes .= ' col-lg-offset-' . $this->owner->OffsetLG;
+            $classes .= ' offset-lg-' . $this->owner->OffsetLG;
             $setOffset = true;
         }
-        //Visibility options
-        if($this->owner->VisibilityXS && $this->owner->VisibilityXS != 'default'){
-            $classes .= ' ' . $this->owner->VisibilityXS . '-xs';
+        if($this->owner->OffsetXL || $setOffset){
+            $classes .= ' offset-xl-' . $this->owner->OffsetLG;
+            $setOffset = true;
         }
-        if($this->owner->VisibilitySM && $this->owner->VisibilitySM != 'default'){
-            $classes .= ' ' . $this->owner->VisibilitySM . '-sm';
+        // Display options
+        if($this->owner->DisplayXS && $this->owner->DisplayXS != 'default'){
+            $classes .= ' d-' . $this->owner->DisplayXS;
         }
-        if($this->owner->VisibilityMD && $this->owner->VisibilityMD != 'default'){
-            $classes .= ' ' . $this->owner->VisibilityMD . '-md';
+        if($this->owner->DisplaySM && $this->owner->DisplaySM != 'default'){
+            $classes .= ' d-sm-' . $this->owner->DisplaySM;
         }
-        if($this->owner->VisibilityLG && $this->owner->VisibilityLG != 'default'){
-            $classes .= ' ' . $this->owner->VisibilityLG . '-lg';
+        if($this->owner->DisplayMD && $this->owner->DisplayMD != 'default'){
+            $classes .= ' d-md-' . $this->owner->DisplayMD;
         }
+        if($this->owner->DisplayLG && $this->owner->DisplayLG != 'default'){
+            $classes .= ' d-lg-' . $this->owner->DisplayLG;
+        }
+        if($this->owner->DisplayXL && $this->owner->DisplayXL != 'default'){
+            $classes .= ' d-xl-' . $this->owner->DisplayXL;
+        }
+
+        // Order options
+        if($this->owner->OrderXS){
+            $classes .= ' order-' . $this->owner->OrderXS;
+        }
+        if($this->owner->OrderSM){
+            $classes .= ' order-sm-' . $this->owner->OrderSM;
+        }
+        if($this->owner->OrderMD){
+            $classes .= ' order-md-' . $this->owner->OrderMD;
+        }
+        if($this->owner->OrderLG){
+            $classes .= ' order-lg-' . $this->owner->OrderLG;
+        }
+        if($this->owner->OrderXL){
+            $classes .= ' order-xl-' . $this->owner->OrderXL;
+        }
+
         return $classes;
     }
 
