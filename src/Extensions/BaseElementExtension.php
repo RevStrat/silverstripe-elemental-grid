@@ -21,7 +21,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
         'SizeSM' => 'Int',
         'SizeMD' => 'Int',
         'SizeLG' => 'Int',
-        'SizeXL' => 'Int'
+        'SizeXL' => 'Int',
 
         'OffsetXS' => 'Int',
         'OffsetSM' => 'Int',
