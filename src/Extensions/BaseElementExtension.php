@@ -103,7 +103,21 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
             $fields->removeByName('OffsetMD');
             $fields->removeByName('OffsetLG');
             $fields->removeByName('OffsetXL');
-            $fields->removeByName('VerticalAlignment');
+            $fields->removeByName('VerticalAlignmentXS');
+            $fields->removeByName('VerticalAlignmentSM');
+            $fields->removeByName('VerticalAlignmentMD');
+            $fields->removeByName('VerticalAlignmentLG');
+            $fields->removeByName('VerticalAlignmentXL');
+            $fields->removeByName('DisplayXS');
+            $fields->removeByName('DisplaySM');
+            $fields->removeByName('DisplayMD');
+            $fields->removeByName('DisplayLG');
+            $fields->removeByName('DisplayXL');
+            $fields->removeByName('OrderXS');
+            $fields->removeByName('OrderSM');
+            $fields->removeByName('OrderMD');
+            $fields->removeByName('OrderLG');
+            $fields->removeByName('OrderXL');
         } else {
             $fields->addFieldsToTab('Root.Layout', [
                 DropdownField::create('SizeXS', _t(__CLASS__ . '.SIZE_XS', 'Size XS'), self::getColSizeOptions()),
