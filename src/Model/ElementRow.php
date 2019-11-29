@@ -12,16 +12,16 @@ use TheWebmen\ElementalGrid\Controllers\ElementRowController;
 class ElementRow extends BaseElement
 {
     private static $db = [
-        'VerticalRowAlignmentXS' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
-        'VerticalRowAlignmentSM' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
-        'VerticalRowAlignmentMD' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
-        'VerticalRowAlignmentLG' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
-        'VerticalRowAlignmentXL' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
-        'HorizontalRowAlignmentXS' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
-        'HorizontalRowAlignmentSM' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
-        'HorizontalRowAlignmentMD' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
-        'HorizontalRowAlignmentLG' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
-        'HorizontalRowAlignmentXL' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
+        'VerticalRowAlignmentXS' => 'Enum("default,start,center,end,baseline,stretch", "default")',
+        'VerticalRowAlignmentSM' => 'Enum("default,start,center,end,baseline,stretch", "default")',
+        'VerticalRowAlignmentMD' => 'Enum("default,start,center,end,baseline,stretch", "default")',
+        'VerticalRowAlignmentLG' => 'Enum("default,start,center,end,baseline,stretch", "default")',
+        'VerticalRowAlignmentXL' => 'Enum("default,start,center,end,baseline,stretch", "default")',
+        'HorizontalRowAlignmentXS' => 'Enum("default,start,center,end,around,between","default")',
+        'HorizontalRowAlignmentSM' => 'Enum("default,start,center,end,around,between","default")',
+        'HorizontalRowAlignmentMD' => 'Enum("default,start,center,end,around,between","default")',
+        'HorizontalRowAlignmentLG' => 'Enum("default,start,center,end,around,between","default")',
+        'HorizontalRowAlignmentXL' => 'Enum("default,start,center,end,around,between","default")',
     ];
 
     private static $icon = 'font-icon-menu';
@@ -142,11 +142,18 @@ class ElementRow extends BaseElement
 
     public function AlignmentClasses() {
         $classes = [
-            $this->VerticalAlignment !== 'default' ? $this->VerticalAlignment : '',
-
+            $this->VerticalRowAlignmentXS !== 'default' ? 'align-items-' . $this->VerticalRowAlignmentXS : '',
+            $this->VerticalRowAlignmentSM !== 'default' ? 'align-items-sm-' . $this->VerticalRowAlignmentSM : '',
+            $this->VerticalRowAlignmentMD !== 'default' ? 'align-items-md-' . $this->VerticalRowAlignmentMD : '',
+            $this->VerticalRowAlignmentLG !== 'default' ? 'align-items-lg-' . $this->VerticalRowAlignmentLG : '',
+            $this->VerticalRowAlignmentXL !== 'default' ? 'align-items-xl-' . $this->VerticalRowAlignmentXL : '',
+            $this->HorizontalRowAlignmentXS !== 'default' ? 'justify-content-' . $this->HorizontalRowAlignmentXS : '',
+            $this->HorizontalRowAlignmentSM !== 'default' ? 'justify-content-sm-' . $this->HorizontalRowAlignmentSM : '',
+            $this->HorizontalRowAlignmentMD !== 'default' ? 'justify-content-md-' . $this->HorizontalRowAlignmentMD : '',
+            $this->HorizontalRowAlignmentLG !== 'default' ? 'justify-content-lg-' . $this->HorizontalRowAlignmentLG : '',
+            $this->HorizontalRowAlignmentXL !== 'default' ? 'justify-content-xl' . $this->HorizontalRowAlignmentXL : '',
         ];
-        $verticalAlignment = $this->VerticalAlignment !== 'default' ? $this->VerticalAlignment : '';
-        $horizontalAlignment = $this->HorizontalAlignment !== 'default' ? $this->VerticalAlignment : '';
+        return implode($classes, ' ');
     }
 
 }
