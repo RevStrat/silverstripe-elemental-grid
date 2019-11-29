@@ -11,7 +11,7 @@ use TheWebmen\ElementalGrid\Controllers\ElementRowController;
 
 class ElementRow extends BaseElement
 {
-    private $db = [
+    private static $db = [
         'VerticalRowAlignmentXS' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
         'VerticalRowAlignmentSM' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
         'VerticalRowAlignmentMD' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
@@ -38,14 +38,14 @@ class ElementRow extends BaseElement
 
     private static $block_type = 'full-width';
 
-    public function getCMSFields()
-    {
+    public function getCMSFields() {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
             $fields->removeByName('Title');
             $fields->addFieldToTab('Root.Main', TextField::create('Title'));
         });
 
         $fields = parent::getCMSFields();
+
         $fields->addFieldToTab('Root.Layout',
             new DropdownField(
               'VerticalRowAlignmentXS',
