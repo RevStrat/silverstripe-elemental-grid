@@ -12,16 +12,16 @@ use TheWebmen\ElementalGrid\Controllers\ElementRowController;
 class ElementRow extends BaseElement
 {
     private $db = [
-        'VerticalAlignmentXS' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
-        'VerticalAlignmentSM' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
-        'VerticalAlignmentMD' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
-        'VerticalAlignmentLG' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
-        'VerticalAlignmentXL' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
-        'HorizontalAlignmentXS' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
-        'HorizontalAlignmentSM' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
-        'HorizontalAlignmentMD' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
-        'HorizontalAlignmentLG' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
-        'HorizontalAlignmentXL' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
+        'VerticalRowAlignmentXS' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
+        'VerticalRowAlignmentSM' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
+        'VerticalRowAlignmentMD' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
+        'VerticalRowAlignmentLG' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
+        'VerticalRowAlignmentXL' => 'Enum("default,align-items-start,align-items-center,align-items-end", "default")',
+        'HorizontalRowAlignmentXS' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
+        'HorizontalRowAlignmentSM' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
+        'HorizontalRowAlignmentMD' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
+        'HorizontalRowAlignmentLG' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
+        'HorizontalRowAlignmentXL' => 'Enum("default,justify-content-start,justify-content-center,justify-content-end,justify-content-around,justify-content-between","default")',
     ];
 
     private static $icon = 'font-icon-menu';
@@ -48,72 +48,72 @@ class ElementRow extends BaseElement
         $fields = parent::getCMSFields();
         $fields->addFieldToTab('Root.Layout',
             new DropdownField(
-              'VerticalAlignmentXS',
+              'VerticalRowAlignmentXS',
               'Vertical Alignment',
-              singleton($this->ClassName)->dbObject('VerticalAlignmentXS')->enumValues()
+              singleton($this->ClassName)->dbObject('VerticalRowAlignmentXS')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.SmallLayout',
             new DropdownField(
-              'VerticalAlignmentSM',
+              'VerticalRowAlignmentSM',
               'Vertical Alignment',
-              singleton($this->ClassName)->dbObject('VerticalAlignmentSM')->enumValues()
+              singleton($this->ClassName)->dbObject('VerticalRowAlignmentSM')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.MediumLayout',
             new DropdownField(
-              'VerticalAlignmentMD',
+              'VerticalRowAlignmentMD',
               'Vertical Alignment',
-              singleton($this->ClassName)->dbObject('VerticalAlignmentMD')->enumValues()
+              singleton($this->ClassName)->dbObject('VerticalRowAlignmentMD')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.LargeLayout',
             new DropdownField(
-              'VerticalAlignmentLG',
+              'VerticalRowAlignmentLG',
               'Vertical Alignment',
-              singleton($this->ClassName)->dbObject('VerticalAlignmentLG')->enumValues()
+              singleton($this->ClassName)->dbObject('VerticalRowAlignmentLG')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.ExtraLargeLayout',
             new DropdownField(
-              'VerticalAlignmentXL',
+              'VerticalRowAlignmentXL',
               'Vertical Alignment',
-              singleton($this->ClassName)->dbObject('VerticalAlignmentXL')->enumValues()
+              singleton($this->ClassName)->dbObject('VerticalRowAlignmentXL')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.Layout',
             new DropdownField(
-              'HorizontalAlignmentXS',
+              'HorizontalRowAlignmentXS',
               'Horizontal Alignment',
-              singleton($this->ClassName)->dbObject('HorizontalAlignmentXS')->enumValues()
+              singleton($this->ClassName)->dbObject('HorizontalRowAlignmentXS')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.SmallLayout',
             new DropdownField(
-              'HorizontalAlignmentSM',
+              'HorizontalRowAlignmentSM',
               'Horizontal Alignment',
-              singleton($this->ClassName)->dbObject('HorizontalAlignmentSM')->enumValues()
+              singleton($this->ClassName)->dbObject('HorizontalRowAlignmentSM')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.MediumLayout',
             new DropdownField(
-              'HorizontalAlignmentMD',
+              'HorizontalRowAlignmentMD',
               'Horizontal Alignment',
-              singleton($this->ClassName)->dbObject('HorizontalAlignmentMD')->enumValues()
+              singleton($this->ClassName)->dbObject('HorizontalRowAlignmentMD')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.LargeLayout',
             new DropdownField(
-              'HorizontalAlignmentLG',
+              'HorizontalRowAlignmentLG',
               'Horizontal Alignment',
-              singleton($this->ClassName)->dbObject('HorizontalAlignmentLG')->enumValues()
+              singleton($this->ClassName)->dbObject('HorizontalRowAlignmentLG')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.ExtraLargeLayout',
             new DropdownField(
-              'HorizontalAlignmentXL',
+              'HorizontalRowAlignmentXL',
               'Horizontal Alignment',
-              singleton($this->ClassName)->dbObject('HorizontalAlignmentXL')->enumValues()
+              singleton($this->ClassName)->dbObject('HorizontalRowAlignmentXL')->enumValues()
         ));
 
         return $fields;
