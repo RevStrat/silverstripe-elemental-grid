@@ -41,13 +41,13 @@ class ElementRow extends BaseElement
         $fields->addFieldsToTab('Root.Alignment', [
             new DropdownField(
               'VerticalAlignment',
-              'Vertical Alignement',
+              'Vertical Alignment',
               singleton($this->owner->ClassName)->dbObject('VerticalAlignment')->enumValues()
             ),
             new DropdownField(
               'HorizontalAlignment',
               'Horizontal Alignement',
-              singleton($this->owner->ClassName)->dbObject('VerticalAlignment')->enumValues()
+              singleton($this->owner->ClassName)->dbObject('HorizontalAlignment')->enumValues()
             ),
         ]);
 
