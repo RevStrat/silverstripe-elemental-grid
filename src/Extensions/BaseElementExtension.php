@@ -29,7 +29,11 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
         'OffsetLG' => 'Int',
         'OffsetXL' => 'Int',
 
-        'VerticalAlignment' => 'Enum("default,align-self-start,align-self-center,align-self-end", "default")',
+        'VerticalAlignmentXS' => 'Enum("default,start,end,center,baseline,stretch", "default")',
+        'VerticalAlignmentSM' => 'Enum("default,start,end,center,baseline,stretch", "default")',
+        'VerticalAlignmentMD' => 'Enum("default,start,end,center,baseline,stretch", "default")',
+        'VerticalAlignmentLG' => 'Enum("default,start,end,center,baseline,stretch", "default")',
+        'VerticalAlignmentXL' => 'Enum("default,start,end,center,baseline,stretch", "default")',
 
         'DisplayXS' => 'Enum("default,none,inline,inline-block,block,table,table-cell,table-row,flex,inline-flex", "default")',
         'DisplaySM' => 'Enum("default,none,inline,inline-block,block,table,table-cell,table-row,flex,inline-flex", "default")',
@@ -105,7 +109,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('SizeXS', _t(__CLASS__ . '.SIZE_XS', 'Size XS'), self::getColSizeOptions()),
                 DropdownField::create('OffsetXS', _t(__CLASS__ . '.OFFSET_XS', 'Offset XS'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayXS', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayXS')->enumValues()),
-                DropdownField::create('VerticalAlignment', 'Vertical Alignement', singleton($this->owner->ClassName)->dbObject('VerticalAlignment')->enumValues()),
+                DropdownField::create('VerticalAlignmentXS', 'Vertical Alignment', singleton($this->owner->ClassName)->dbObject('VerticalAlignmentXS')->enumValues()),
                 DropdownField::create('OrderXS', 'Order', self::getColSizeOptions())
             ]);
 
@@ -113,6 +117,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('SizeSM', _t(__CLASS__ . '.SIZE_SM', 'Size SM'), self::getColSizeOptions(true)),
                 DropdownField::create('OffsetSM', _t(__CLASS__ . '.OFFSET_SM', 'Offset SM'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplaySM', 'Display', singleton($this->owner->ClassName)->dbObject('DisplaySM')->enumValues()),
+                DropdownField::create('VerticalAlignmentSM', 'Vertical Alignment', singleton($this->owner->ClassName)->dbObject('VerticalAlignmentSM')->enumValues()),
                 DropdownField::create('OrderSM', 'Order', self::getColSizeOptions())
             ]);
 
@@ -120,6 +125,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('SizeMD', _t(__CLASS__ . '.SIZE_MD', 'Size MD'), self::getColSizeOptions(true)),
                 DropdownField::create('OffsetMD', _t(__CLASS__ . '.OFFSET_MD', 'Offset MD'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayMD', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayMD')->enumValues()),
+                DropdownField::create('VerticalAlignmentMD', 'Vertical Alignment', singleton($this->owner->ClassName)->dbObject('VerticalAlignmentMD')->enumValues()),
                 DropdownField::create('OrderMD', 'Order', self::getColSizeOptions())
             ]);
 
@@ -127,6 +133,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('SizeLG', _t(__CLASS__ . '.SIZE_LG', 'Size LG'), self::getColSizeOptions(true)),
                 DropdownField::create('OffsetLG', _t(__CLASS__ . '.OFFSET_LG', 'Offset LG'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayLG', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayLG')->enumValues()),
+                DropdownField::create('VerticalAlignmentLG', 'Vertical Alignment', singleton($this->owner->ClassName)->dbObject('VerticalAlignmentLG')->enumValues()),
                 DropdownField::create('OrderLG', 'Order', self::getColSizeOptions())
             ]);
 
@@ -134,6 +141,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('SizeXL', _t(__CLASS__ . '.SIZE_XL', 'Size XL'), self::getColSizeOptions(true)),
                 DropdownField::create('OffsetXL', _t(__CLASS__ . '.OFFSET_XL', 'Offset XL'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayXL', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayXL')->enumValues()),
+                DropdownField::create('VerticalAlignmentXL', 'Vertical Alignment', singleton($this->owner->ClassName)->dbObject('VerticalAlignmentXL')->enumValues()),
                 DropdownField::create('OrderXL', 'Order', self::getColSizeOptions())
             ]);
         }
@@ -215,6 +223,23 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
         }
         if($this->owner->OrderXL){
             $classes .= ' order-xl-' . $this->owner->OrderXL;
+        }
+
+        // Vertical alignment options
+        if($this->owner->VerticalAlignmentXS && $this->owner->VerticalAlignmentXS != 'default'){
+            $classes .= ' align-self-' . $this->owner->VerticalAlignmentXS;
+        }
+        if($this->owner->VerticalAlignmentSM && $this->owner->VerticalAlignmentSM != 'default'){
+            $classes .= ' align-self-sm-' . $this->owner->VerticalAlignmentSM;
+        }
+        if($this->owner->VerticalAlignmentMD && $this->owner->VerticalAlignmentMD != 'default'){
+            $classes .= ' align-self-md-' . $this->owner->VerticalAlignmentMD;
+        }
+        if($this->owner->VerticalAlignmentLG && $this->owner->VerticalAlignmentLG != 'default'){
+            $classes .= ' align-self-lg-' . $this->owner->VerticalAlignmentLG;
+        }
+        if($this->owner->VerticalAlignmentXL && $this->owner->VerticalAlignmentXL != 'default'){
+            $classes .= ' align-self-xl-' . $this->owner->VerticalAlignmentXL;
         }
 
         return $classes;
