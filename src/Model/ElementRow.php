@@ -84,35 +84,35 @@ class ElementRow extends BaseElement
         $fields->addFieldToTab('Root.Layout',
             new DropdownField(
               'HorizontalAlignmentXS',
-              'Horizontal Alignement',
+              'Horizontal Alignment',
               singleton($this->ClassName)->dbObject('HorizontalAlignmentXS')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.SmallLayout',
             new DropdownField(
               'HorizontalAlignmentSM',
-              'Horizontal Alignement',
+              'Horizontal Alignment',
               singleton($this->ClassName)->dbObject('HorizontalAlignmentSM')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.MediumLayout',
             new DropdownField(
               'HorizontalAlignmentMD',
-              'Horizontal Alignement',
+              'Horizontal Alignment',
               singleton($this->ClassName)->dbObject('HorizontalAlignmentMD')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.LargeLayout',
             new DropdownField(
               'HorizontalAlignmentLG',
-              'Horizontal Alignement',
+              'Horizontal Alignment',
               singleton($this->ClassName)->dbObject('HorizontalAlignmentLG')->enumValues()
         ));
 
         $fields->addFieldToTab('Root.ExtraLargeLayout',
             new DropdownField(
               'HorizontalAlignmentXL',
-              'Horizontal Alignement',
+              'Horizontal Alignment',
               singleton($this->ClassName)->dbObject('HorizontalAlignmentXL')->enumValues()
         ));
 
