@@ -130,7 +130,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('OrderLG', 'Order', self::getColSizeOptions())
             ]);
 
-            $fields->addFieldToTab('Root.ExtraLargeLayout', [
+            $fields->addFieldsToTab('Root.ExtraLargeLayout', [
                 DropdownField::create('SizeXL', _t(__CLASS__ . '.SIZE_XL', 'Size XL'), self::getColSizeOptions(true)),
                 DropdownField::create('OffsetXL', _t(__CLASS__ . '.OFFSET_XL', 'Offset XL'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayXL', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayXL')->enumValues()),
