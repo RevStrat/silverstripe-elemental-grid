@@ -139,16 +139,16 @@ class ElementRow extends BaseElement
 
     public function AlignmentClasses() {
         $classes = [
-            $this->VerticalRowAlignmentXS !== 'default' ? 'align-items-' . $this->VerticalRowAlignmentXS : '',
-            $this->VerticalRowAlignmentSM !== 'default' ? 'align-items-sm-' . $this->VerticalRowAlignmentSM : '',
-            $this->VerticalRowAlignmentMD !== 'default' ? 'align-items-md-' . $this->VerticalRowAlignmentMD : '',
-            $this->VerticalRowAlignmentLG !== 'default' ? 'align-items-lg-' . $this->VerticalRowAlignmentLG : '',
-            $this->VerticalRowAlignmentXL !== 'default' ? 'align-items-xl-' . $this->VerticalRowAlignmentXL : '',
-            $this->HorizontalRowAlignmentXS !== 'default' ? 'justify-content-' . $this->HorizontalRowAlignmentXS : '',
-            $this->HorizontalRowAlignmentSM !== 'default' ? 'justify-content-sm-' . $this->HorizontalRowAlignmentSM : '',
-            $this->HorizontalRowAlignmentMD !== 'default' ? 'justify-content-md-' . $this->HorizontalRowAlignmentMD : '',
-            $this->HorizontalRowAlignmentLG !== 'default' ? 'justify-content-lg-' . $this->HorizontalRowAlignmentLG : '',
-            $this->HorizontalRowAlignmentXL !== 'default' ? 'justify-content-xl' . $this->HorizontalRowAlignmentXL : '',
+            ($this->VerticalRowAlignmentXS !== 'default' && strlen($this->VerticalRowAlignmentXS) != 0) ? 'align-items-' . $this->VerticalRowAlignmentXS : '',
+            ($this->VerticalRowAlignmentSM !== 'default' && strlen($this->VerticalRowAlignmentSM) != 0) ? 'align-items-sm-' . $this->VerticalRowAlignmentSM : '',
+            ($this->VerticalRowAlignmentMD !== 'default' && strlen($this->VerticalRowAlignmentMD) != 0) ? 'align-items-md-' . $this->VerticalRowAlignmentMD : '',
+            ($this->VerticalRowAlignmentLG !== 'default' && strlen($this->VerticalRowAlignmentLG) != 0) ? 'align-items-lg-' . $this->VerticalRowAlignmentLG : '',
+            ($this->VerticalRowAlignmentXL !== 'default' && strlen($this->VerticalRowAlignmentXL) != 0) ? 'align-items-xl-' . $this->VerticalRowAlignmentXL : '',
+            ($this->HorizontalRowAlignmentXS !== 'default' && strlen($this->HorizontalRowAlignmentXS) != 0) ? 'justify-content-' . $this->HorizontalRowAlignmentXS : '',
+            ($this->HorizontalRowAlignmentSM !== 'default' && strlen($this->HorizontalRowAlignmentSM) != 0) ? 'justify-content-sm-' . $this->HorizontalRowAlignmentSM : '',
+            ($this->HorizontalRowAlignmentMD !== 'default' && strlen($this->HorizontalRowAlignmentMD) != 0) ? 'justify-content-md-' . $this->HorizontalRowAlignmentMD : '',
+            ($this->HorizontalRowAlignmentLG !== 'default' && strlen($this->HorizontalRowAlignmentLG) != 0) ? 'justify-content-lg-' . $this->HorizontalRowAlignmentLG : '',
+            ($this->HorizontalRowAlignmentXL !== 'default' && strlen($this->HorizontalRowAlignmentXL) != 0) ? 'justify-content-xl' . $this->HorizontalRowAlignmentXL : '',
         ];
         return implode($classes, ' ');
     }
