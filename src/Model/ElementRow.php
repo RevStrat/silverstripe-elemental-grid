@@ -32,7 +32,7 @@ class ElementRow extends BaseElement
 
     private static $plural_name = 'rows';
 
-    private static $description = 'Row element';
+    private static $description = 'Row';
 
     private static $controller_class = ElementRowController::class;
 
@@ -119,18 +119,15 @@ class ElementRow extends BaseElement
         return $fields;
     }
 
-    public function getSummary()
-    {
+    public function getSummary() {
         return '';
     }
 
-    public function getType()
-    {
+    public function getType() {
         return _t(__CLASS__ . '.BlockType', 'Row');
     }
     
-    public function RowClass()
-    {
+    public function RowClass() {
         switch (Config::forClass('TheWebmen\ElementalGrid')->get('cssFramework')){
             case 'bulma':
                 return 'columns is-multiline';

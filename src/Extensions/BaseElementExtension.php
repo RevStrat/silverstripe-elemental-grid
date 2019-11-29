@@ -124,7 +124,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('OffsetXS', _t(__CLASS__ . '.OFFSET_XS', 'Offset XS'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayXS', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayXS')->enumValues()),
                 DropdownField::create('VerticalAlignmentXS', 'Vertical Alignment', singleton($this->owner->ClassName)->dbObject('VerticalAlignmentXS')->enumValues()),
-                DropdownField::create('OrderXS', 'Order', self::getColSizeOptions())
+                DropdownField::create('OrderXS', 'Order', self::getColSizeOptions(true))
             ]);
 
             $fields->addFieldsToTab('Root.SmallLayout', [
@@ -132,7 +132,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('OffsetSM', _t(__CLASS__ . '.OFFSET_SM', 'Offset SM'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplaySM', 'Display', singleton($this->owner->ClassName)->dbObject('DisplaySM')->enumValues()),
                 DropdownField::create('VerticalAlignmentSM', 'Vertical Alignment', singleton($this->owner->ClassName)->dbObject('VerticalAlignmentSM')->enumValues()),
-                DropdownField::create('OrderSM', 'Order', self::getColSizeOptions())
+                DropdownField::create('OrderSM', 'Order', self::getColSizeOptions(true))
             ]);
 
             $fields->addFieldsToTab('Root.MediumLayout', [
@@ -140,7 +140,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('OffsetMD', _t(__CLASS__ . '.OFFSET_MD', 'Offset MD'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayMD', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayMD')->enumValues()),
                 DropdownField::create('VerticalAlignmentMD', 'Vertical Alignment', singleton($this->owner->ClassName)->dbObject('VerticalAlignmentMD')->enumValues()),
-                DropdownField::create('OrderMD', 'Order', self::getColSizeOptions())
+                DropdownField::create('OrderMD', 'Order', self::getColSizeOptions(true))
             ]);
 
             $fields->addFieldsToTab('Root.LargeLayout', [
@@ -148,7 +148,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('OffsetLG', _t(__CLASS__ . '.OFFSET_LG', 'Offset LG'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayLG', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayLG')->enumValues()),
                 DropdownField::create('VerticalAlignmentLG', 'Vertical Alignment', singleton($this->owner->ClassName)->dbObject('VerticalAlignmentLG')->enumValues()),
-                DropdownField::create('OrderLG', 'Order', self::getColSizeOptions())
+                DropdownField::create('OrderLG', 'Order', self::getColSizeOptions(true))
             ]);
 
             $fields->addFieldsToTab('Root.ExtraLargeLayout', [
@@ -156,7 +156,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
                 DropdownField::create('OffsetXL', _t(__CLASS__ . '.OFFSET_XL', 'Offset XL'), self::getColSizeOptions(false, true)),
                 DropdownField::create('DisplayXL', 'Display', singleton($this->owner->ClassName)->dbObject('DisplayXL')->enumValues()),
                 DropdownField::create('VerticalAlignmentXL', 'Vertical Alignment', singleton($this->owner->ClassName)->dbObject('VerticalAlignmentXL')->enumValues()),
-                DropdownField::create('OrderXL', 'Order', self::getColSizeOptions())
+                DropdownField::create('OrderXL', 'Order', self::getColSizeOptions(true))
             ]);
         }
         //parent::updateCMSFields($fields);
@@ -181,7 +181,7 @@ class BaseElementExtension extends \SilverStripe\ORM\DataExtension {
             $classes .= ' col-lg-' . $this->owner->SizeLG;
         }
         if($this->owner->SizeXL){
-            $classes .= ' col-xl-' . $this->owner->SizeLG;
+            $classes .= ' col-xl-' . $this->owner->SizeXL;
         }
         //Offset options
         $setOffset = false;
